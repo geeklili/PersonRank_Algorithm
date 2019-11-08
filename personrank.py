@@ -36,13 +36,12 @@ def inverse_matrix_method():
 	alpha = 0.5
 	n = M.shape[0]
 
-	# 单位矩阵 np.eye(n)
-	A = np.eye(n) - alpha * M.T
-	b = (1 - alpha) * U0
+	# 单位矩阵:np.eye(n) 逆矩阵:I
+	I = np.linalg.inv(np.eye(n) - alpha * M.T)
+	c = (1 - alpha) * U0
 
-	# 逆矩阵 np.linalg.inv(A)
-	# U = np.linalg.inv(A) * b
-	U = np.dot(np.linalg.inv(A), b)
+	# 计算最终结果
+	U = np.dot(I, c)
 
 	print('Un收敛于: ', U.tolist())
 
